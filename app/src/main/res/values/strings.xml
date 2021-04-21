@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FlowerMoon</string>
+    <string name="home">首页</string>
+    <string name="discoveries">发现</string>
+    <string name="messages">消息</string>
+    <string name="mine">我的</string>
+
 </resources>
