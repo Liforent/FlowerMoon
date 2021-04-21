@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/red_F45C52</item>
+        <item name="colorPrimaryDark">@color/black33</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- 隐藏标题栏 -->
+        <item name="windowNoTitle">true</item>
+        <!-- 处理程序启动时短暂的白屏（该属性可以让程序在初始化的时候窗口透明，初始化结束后主界面才会显示出来，从而也就完全看不出来白屏了。）-->
+        <!-- <item name="android:windowIsTranslucent">true</item>-->
+        <!-- 设置activity默认背景色为白色-->
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="NavigationTextAppearance">
+        <item name="android:textColor">?android:textColorPrimary</item>
+        <item name="android:textColorHighlight">?android:textColorHighlight</item>
+        <item name="android:textColorHint">?android:textColorHint</item>
+        <item name="android:textColorLink">?android:textColorLink</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="NavigationTextAppearance.active" parent="NavigationTextAppearance">
+        <item name="android:textColor">@color/red_F45C52</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <color name="black33">#333333</color>
+    <color name="red_F45C52">#f45c52</color>
+    <color name="colorAccent">#ff77aa</color>
+</resources>

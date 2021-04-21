@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/tab_home_selector"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/navigation_discoveries"
+        android:icon="@drawable/tab_discoveries_selector"
+        android:title="@string/discoveries" />
+
+    <item
+        android:id="@+id/navigation_messages"
+        android:icon="@drawable/tab_messages_selector"
+        android:title="@string/messages" />
+
+    <item
+        android:id="@+id/navigation_mine"
+        android:icon="@drawable/tab_mine_selector"
+        android:title="@string/mine" />
+</menu>
