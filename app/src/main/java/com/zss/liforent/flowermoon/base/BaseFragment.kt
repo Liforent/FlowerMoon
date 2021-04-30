@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.gyf.immersionbar.ImmersionBar
 import com.kingja.loadsir.core.LoadService
 import com.kingja.loadsir.core.LoadSir
 
@@ -20,23 +21,29 @@ abstract class BaseFragment : Fragment() {
         requireActivity()
     }
 
-    val loadService: LoadService<*> by lazy {
-        LoadSir.getDefault().register(this) {
-            reLoad()
-        }
-    }
+    lateinit var mLoadService: LoadService<*>
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        val rootView = inflater.inflate(getLayoutId(), null)
+        mLoadService = LoadSir.getDefault().register(rootView) { reLoad() }
+        return mLoadService.loadLayout
     }
 
-
-    open fun reLoad() {
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        ImmersionBar.with(this).init()
+        mLoadService.showSuccess()
+        initView()
+        initEvent()
     }
+
+    abstract fun getLayoutId(): Int
+    open fun reLoad() {}
+    open fun initView(){}
+    open fun initEvent(){}
 
 }

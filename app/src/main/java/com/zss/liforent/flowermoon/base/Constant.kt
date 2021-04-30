@@ -2,8 +2,8 @@ package com.zss.liforent.flowermoon.base
 
 object Constant {
     const val isDebug = true
-    const val RELEASE_DOMAIN = ""
-    const val DEBUG_DOMAIN = ""
+    private const val RELEASE_DOMAIN = "https://www.wanandroid.com"
+    private const val DEBUG_DOMAIN = "https://www.wanandroid.com"
     var DOMAIN = if(isDebug) DEBUG_DOMAIN else RELEASE_DOMAIN
 
     const val TAB_HOME = 0

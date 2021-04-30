@@ -11,13 +11,14 @@ import com.zss.liforent.flowermoon.module.test.TestViewModel
  *@CreateTime: 2021/04/20 20:37
  *@Descriptions:
  */
-class TestActivity : BaseLifeCycleActivity<TestViewModel>() {
+abstract class TestActivity : BaseLifeCycleActivity<TestViewModel>() {
 
 //    private val mStateObserver = Observer<BaseResponse<TestResponse>> {
 //        it.onResponse(loadState = 1, {}, {})
 //    }
 
-    override fun getLayoutId(): Int = R.layout.activity_test
+
+
     override fun initDataObserver() {
         mViewModel.mTestData.observe(
             this, {

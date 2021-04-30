@@ -8,33 +8,33 @@ import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.zss.liforent.flowermoon.R
 import com.zss.liforent.flowermoon.base.BaseActivity
 import com.zss.liforent.flowermoon.base.Constant
-import com.zss.liforent.flowermoon.databinding.ActivityMainBinding
+import com.zss.liforent.flowermoon.module.home.view.HomeFragment
+import com.zss.liforent.flowermoon.module.test.view.TestFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     private var mFragmentSparseArray = SparseArray<Fragment>()
     private var mExitTime = 0L
     private var mCurrentFragment: Fragment? = null
-    private lateinit var binding: ActivityMainBinding
-
     override fun getLayoutId(): Int = R.layout.activity_main
+
 
     override fun initView() {
         super.initView()
-        binding = ActivityMainBinding.inflate(layoutInflater)
         initNavView()
         switchFragment(Constant.TAB_HOME)
     }
 
 
     private fun initNavView() {
-        binding.bottomNavView.apply {
+        bottom_nav_view.apply {
             //取消导航栏着色
             itemIconTintList = null
             //图标和文字同时显示
             labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
             setOnNavigationItemSelectedListener { item: MenuItem ->
 
-                if (item.itemId == binding.bottomNavView.selectedItemId) {
+                if (item.itemId == bottom_nav_view.selectedItemId) {
                     return@setOnNavigationItemSelectedListener false
                 }
                 when (item.itemId) {
@@ -64,23 +64,26 @@ class MainActivity : BaseActivity() {
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
         mCurrentFragment = fragmentManager.findFragmentByTag(position.toString())
-        hideAll(transaction)
         if (mCurrentFragment == null) {
             mCurrentFragment = getFragment(position)
+            hideAll(transaction)
             transaction.add(R.id.fragment_page, mCurrentFragment!!, position.toString())
         } else {
+            hideAll(transaction)
             transaction.show(mCurrentFragment!!)
         }
+        transaction.commit()
+
     }
 
     private fun getFragment(position: Int): Fragment {
         var fragment: Fragment? = mFragmentSparseArray.get(position)
         if (fragment == null) {
             when (position) {
-                Constant.TAB_HOME -> fragment = Fragment()
-                Constant.TAB_DISCOVERIES -> fragment = Fragment()
-                Constant.TAB_MESSAGES -> fragment = Fragment()
-                Constant.TAB_MINE -> fragment = Fragment()
+                Constant.TAB_HOME -> fragment = HomeFragment()
+                Constant.TAB_DISCOVERIES -> fragment = TestFragment()
+                Constant.TAB_MESSAGES -> fragment = TestFragment()
+                Constant.TAB_MINE -> fragment = TestFragment()
             }
             mFragmentSparseArray.put(position, fragment)
         }

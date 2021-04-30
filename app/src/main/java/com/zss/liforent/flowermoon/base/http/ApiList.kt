@@ -8,4 +8,5 @@ package com.zss.liforent.flowermoon.base.http
  */
 object ApiList {
     const val LOGIN = 1001
+    const val GET_ARTICLE_LIST = 1002
 }

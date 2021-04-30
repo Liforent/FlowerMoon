@@ -1,2 +1,5 @@
 2021.4.20
     搭建基础模块
+
+2021.4.25
+    viewBinding似乎还是有问题，bottomNavigationView的表现会有问题。

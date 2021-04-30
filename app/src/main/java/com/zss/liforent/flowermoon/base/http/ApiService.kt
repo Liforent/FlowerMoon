@@ -1,5 +1,6 @@
 package com.zss.liforent.flowermoon.base.http
 
+import com.zss.liforent.flowermoon.module.home.data.ArticalListResponse
 import com.zss.liforent.flowermoon.module.test.data.TestModel
 import com.zss.liforent.flowermoon.module.test.data.TestResponse
 import retrofit2.http.*
@@ -24,5 +25,11 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body model:TestModel
     ): BaseResponse<TestResponse>
+
+    //1006
+    @GET("/article/list/{index}/json")
+    suspend fun getArticalList(
+            @Path("index") id: Int
+    ): BaseWanAndroidPageResponse<ArticalListResponse>
 
 }
